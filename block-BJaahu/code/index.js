@@ -5,18 +5,18 @@
 
 //prototypal function
 let quizMethods = {
-  isAnswerCorrect: function () {
-    return correctAnswerIndex[index] == options[index];
+  isAnswerCorrect: function (index) {
+    return index == this.isAnswerCorrect[index];
   },
   getCorrectAnswer: function () {
-    return correctAnswerIndex[index];
+    return index == this.isAnswerCorrect[index];
   },
 };
-function Question(title, options, index) {
+function Question(title, options, correctAnswerIndex) {
   let quiz = Object.create(quizMethods);
   quiz.title = title;
   quiz.options = options;
-  quiz.correctAnswerIndex = index;
+  quiz.correctAnswerIndex = correctAnswerIndex;
   return quiz;
 }
 // - Methods:
@@ -25,32 +25,32 @@ function Question(title, options, index) {
 
 //Pseudoclassical Pattern
 
-function Question(title, options, index) {
-  //   let quiz = Object.create(quizMethods);
+function Question(title, options, correctAnswerIndex) {
   this.title = title;
   this.options = options;
   this.correctAnswerIndex = index;
 }
 Question.prototype = {
   isAnswerCorrect: function () {
-    return correctAnswerIndex[index] == options[index];
+    return index == this.isAnswerCorrect[index];
   },
   getCorrectAnswer: function () {
-    return correctAnswerIndex[index];
+    return index == this.isAnswerCorrect[index];
   },
 };
 
 //class
 class Question {
-    constructor(title, options, index)
-    //   let quiz = Object.create(quizMethods);
+  constructor(title, options, correctAnswerIndex) {
     this.title = title;
     this.options = options;
     this.correctAnswerIndex = index;
-    isAnswerCorrect() {
-      return correctAnswerIndex[index] == options[index];
-    }
-    getCorrectAnswer() {
-      return correctAnswerIndex[index];
-    }
   }
+
+  isAnswerCorrect(index) {
+    return index == this.isAnswerCorrect[index];
+  }
+  getCorrectAnswer() {
+    return index == this.isAnswerCorrect[index];
+  }
+}
