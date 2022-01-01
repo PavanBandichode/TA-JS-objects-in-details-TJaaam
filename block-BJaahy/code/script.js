@@ -1,18 +1,30 @@
-class Square {
-  constructor(side, width, height) {
-    this.width = side;
-    this.height = side;
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
-  description() {
-    return `The square is ${this.width} x ${this.height}`;
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  set fullName(name) {
+    if (name.length < 5) {
+      alert(`Full name should be more than 5 characters`);
+    } else {
+      let fName = this.name.split(" ")[0];
+      let lName = this.name.split(" ")[1];
+      this.fName = fName;
+      this.lName = lName;
+      return `${this.fName} ${this.lName}`;
+    }
+  }
+  nameContains(string) {
+    return `${this.firstName} ${this.lastName}`.includes(string);
   }
   calcArea() {
-    return `area = ${this.width} * ${this.height}`;
+    return this.width * this.height;
   }
-  set area(){
-    return `area = ${this.width} * ${this.height}`;
-  }
-  get area(num1) {
-    return `area = ${this.width} * ${this.height}`;
+
+  static isEqual(a, b) {
+    return a.width * a.height == b.width * b.height;
   }
 }
