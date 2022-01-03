@@ -44,3 +44,28 @@ function dog(location, numberOfLegs, name, color) {
 }
 
 //cat
+let catMethods = {
+  meow: function () {
+    alert(`I am ${this.name} and I can do mewo meow 😹`);
+  },
+  changeName: function (newName) {
+    this.name = newName;
+    return this.name;
+  },
+  hangeColorOfEyes: function (newColor) {
+    this.color = newColor;
+    return this.color;
+  },
+  summary: function () {
+    return `I am ${this.name} and the color of my eyes are ${this.colorOfEyes}. I can also do meow meow`;
+  },
+};
+
+function cat(name, colorOfEyes) {
+  let catInfo = dog(location, numberOfLegs, name, color);
+  Object.setPrototypeOf(catInfo, catMethods);
+  catInfo.name = name;
+  catInfo.colorOfEyes = colorOfEyes;
+  return catInfo;
+}
+Object.setPrototypeOf(catMethods, animalMethods);
